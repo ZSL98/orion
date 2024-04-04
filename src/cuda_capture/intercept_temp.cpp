@@ -124,6 +124,7 @@ DEBUG_PRINT("\n");
 extern "C" {
 	void block(int it) {
 		int idx = get_idx();
+		// DEBUG_PRINT("idx: %d\n", idx);
 		assert (idx >= 0);
 		volatile bool* status_ar = client_request_status[idx];
 		while (!status_ar[it]);
@@ -421,6 +422,8 @@ cudaError_t cudaLaunchKernel ( const void* func, dim3 gridDim, dim3 blockDim, vo
 	int idx = get_idx();
 	assert (idx >= 0);
 
+	DEBUG_PRINT("[IDX: %d] Caught cudaLaunchKernel=======================!\n", idx);
+
 	if (kernel_func == NULL) {
 		*(void **)(&kernel_func) = dlsym (RTLD_NEXT, "cudaLaunchKernel");
 		assert (kernel_func != NULL);
@@ -447,11 +450,11 @@ cudaError_t cudaLaunchKernel ( const void* func, dim3 gridDim, dim3 blockDim, vo
 
 	}
 	else {
-		DEBUG_PRINT("[INTERCEPTER] about to submit %p\n", func);
+		// DEBUG_PRINT("[INTERCEPTER] about to submit %p\n", func);
 
 		err = (*kernel_func)(func, gridDim, blockDim, args, sharedMem, stream);
 		CHECK_CUDA_ERROR(err); // this checks kernel-launching errors
-		DEBUG_PRINT("SUBMITTED\n");
+		// DEBUG_PRINT("SUBMITTED\n");
 
 	}
 	return err;

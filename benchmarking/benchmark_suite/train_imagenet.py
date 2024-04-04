@@ -104,7 +104,7 @@ def imagenet_loop(
     print("-------------- thread id:  ", threading.get_native_id())
 
     if (train and tid==1):
-        time.sleep(5)
+        time.sleep(2)
 
     #data = torch.rand([batchsize, 3, 224, 224]).contiguous()
     #target = torch.ones([batchsize]).to(torch.long)
@@ -131,7 +131,7 @@ def imagenet_loop(
 
     #  open loop
     next_startup = time.time()
-    open_loop = True
+    open_loop = False
 
     if True:
         timings=[]
@@ -144,7 +144,8 @@ def imagenet_loop(
                 #torch.cuda.profiler.cudart().cudaProfilerStart()
                 if train:
                     #client_barrier.wait()
-                    print(f"Client {tid}, submit!, batch_idx is {batch_idx}")
+                    print(f"Client {tid}, submit!!, batch_idx is {batch_idx}")
+                    print("here")
                     # if tid==0 and batch_idx==20:
                     #     torch.cuda.profiler.cudart().cudaProfilerStart()
                     gpu_data, gpu_target = batch[0].to(local_rank), batch[1].to(local_rank)
@@ -153,7 +154,9 @@ def imagenet_loop(
                     loss = criterion(output, gpu_target)
                     loss.backward()
                     optimizer.step()
+                    print("here!")
                     block(backend_lib, batch_idx)
+                    print("here!!")
                     iter_time = time.time()-start_iter
                     timings.append(iter_time)
                     #print(f"Client {tid} finished! Wait! It took {timings[batch_idx]}")
@@ -207,6 +210,7 @@ def imagenet_loop(
                             print(f"Client {tid}, submit!, batch_idx is {batch_idx}")
                             gpu_data = batch[0].to(local_rank)
                             output = model(gpu_data)
+                            # print("here3")
                             block(backend_lib, batch_idx)
                             print(f"Client {tid} finished! Wait!")
                             batch_idx,batch = next(train_iter)

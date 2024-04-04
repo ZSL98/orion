@@ -1,0 +1,844 @@
+28/03/2024 11:41:07 INFO    : [main.py:88] full config:
+{
+    "policy": "Streams",
+    "models": {
+        "model0": {
+            "mode": "train",
+            "name": "bert-1"
+        },
+        "model1": {
+            "mode": "train",
+            "name": "bert-1"
+        }
+    },
+    "shared_config": {
+        "distribution": "poisson",
+        "trace_path": "./inter_arrival_times.json",
+        "pin_memory": true,
+        "seed": 42
+    },
+    "resnet50": {
+        "arch": "resnet50",
+        "batch_size": 4,
+        "num_iterations": 100,
+        "request_rate": 15
+    },
+    "resnet101": {
+        "arch": "resnet101",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 10000,
+        "request_rate": 0
+    },
+    "bert": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "transformer": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "resnet50-1": {
+        "arch": "resnet50",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "resnet101-1": {
+        "arch": "resnet101",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2-1": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 1000,
+        "request_rate": 100
+    },
+    "bert-1": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 1000,
+        "request_rate": 8
+    },
+    "transformer-1": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 20
+    }
+}
+28/03/2024 11:41:13 INFO    : [train_bert_on_squad.py:230] bert model is set up with 1000
+28/03/2024 11:41:13 INFO    : [train_bert_on_squad.py:230] bert model is set up with 1000
+28/03/2024 11:45:31 INFO    : [train_bert_on_squad.py:282] tid 1 it takes 254.78855085372925 seconds to train bert
+28/03/2024 11:45:31 INFO    : [train_bert_on_squad.py:282] tid 0 it takes 254.68173837661743 seconds to train bert
+28/03/2024 11:49:20 INFO    : [main.py:88] full config:
+{
+    "policy": "Streams",
+    "models": {
+        "model0": {
+            "mode": "train",
+            "name": "bert-1"
+        },
+        "model1": {
+            "mode": "train",
+            "name": "bert-1"
+        }
+    },
+    "shared_config": {
+        "distribution": "poisson",
+        "trace_path": "./inter_arrival_times.json",
+        "pin_memory": true,
+        "seed": 42
+    },
+    "resnet50": {
+        "arch": "resnet50",
+        "batch_size": 4,
+        "num_iterations": 100,
+        "request_rate": 15
+    },
+    "resnet101": {
+        "arch": "resnet101",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 10000,
+        "request_rate": 0
+    },
+    "bert": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "transformer": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mnasnet-1": {
+        "arch": "mnasnet",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "vgg11-1": {
+        "arch": "vgg11",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "resnet50-1": {
+        "arch": "resnet50",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "resnet101-1": {
+        "arch": "resnet101",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2-1": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 1000,
+        "request_rate": 100
+    },
+    "bert-1": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 1000,
+        "request_rate": 8
+    },
+    "transformer-1": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 20
+    }
+}
+28/03/2024 11:49:25 INFO    : [train_bert_on_squad.py:230] bert model is set up with 1000
+28/03/2024 11:49:25 INFO    : [train_bert_on_squad.py:230] bert model is set up with 1000
+28/03/2024 11:53:41 INFO    : [train_bert_on_squad.py:282] tid 1 it takes 253.06244373321533 seconds to train bert
+28/03/2024 11:53:41 INFO    : [train_bert_on_squad.py:282] tid 0 it takes 252.94062304496765 seconds to train bert
+28/03/2024 13:28:09 INFO    : [main.py:96] full config:
+{
+    "policy": "TickTock",
+    "models": {
+        "model0": {
+            "mode": "train",
+            "name": "bert-1"
+        },
+        "model1": {
+            "mode": "train",
+            "name": "bert-1"
+        }
+    },
+    "shared_config": {
+        "distribution": "poisson",
+        "trace_path": "./inter_arrival_times.json",
+        "pin_memory": true,
+        "seed": 42
+    },
+    "resnet50": {
+        "arch": "resnet50",
+        "batch_size": 4,
+        "num_iterations": 100,
+        "request_rate": 15
+    },
+    "resnet101": {
+        "arch": "resnet101",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 10000,
+        "request_rate": 0
+    },
+    "bert": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "transformer": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "nasnet-1": {
+        "arch": "nasnet",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "vgg11-1": {
+        "arch": "vgg11",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "resnet50-1": {
+        "arch": "resnet50",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "resnet101-1": {
+        "arch": "resnet101",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2-1": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 1000,
+        "request_rate": 100
+    },
+    "bert-1": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "transformer-1": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 20
+    }
+}
+28/03/2024 13:28:14 INFO    : [train_bert_on_squad.py:230] bert model is set up with 500
+28/03/2024 13:28:14 INFO    : [train_bert_on_squad.py:230] bert model is set up with 500
+28/03/2024 13:31:17 INFO    : [train_bert_on_squad.py:282] tid 1 it takes 178.9945032596588 seconds to train bert
+28/03/2024 13:31:17 INFO    : [train_bert_on_squad.py:282] tid 0 it takes 178.85205173492432 seconds to train bert
+28/03/2024 13:31:55 INFO    : [main.py:96] full config:
+{
+    "policy": "TickTock",
+    "models": {
+        "model0": {
+            "mode": "train",
+            "name": "bert-1"
+        },
+        "model1": {
+            "mode": "train",
+            "name": "bert-1"
+        }
+    },
+    "shared_config": {
+        "distribution": "poisson",
+        "trace_path": "./inter_arrival_times.json",
+        "pin_memory": true,
+        "seed": 42
+    },
+    "resnet50": {
+        "arch": "resnet50",
+        "batch_size": 4,
+        "num_iterations": 100,
+        "request_rate": 15
+    },
+    "resnet101": {
+        "arch": "resnet101",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 10000,
+        "request_rate": 0
+    },
+    "bert": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "transformer": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "nasnet-1": {
+        "arch": "nasnet",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "vgg11-1": {
+        "arch": "vgg11",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "resnet50-1": {
+        "arch": "resnet50",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "resnet101-1": {
+        "arch": "resnet101",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2-1": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 1000,
+        "request_rate": 100
+    },
+    "bert-1": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "transformer-1": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 20
+    }
+}
+28/03/2024 13:32:01 INFO    : [train_bert_on_squad.py:230] bert model is set up with 500
+28/03/2024 13:32:02 INFO    : [train_bert_on_squad.py:230] bert model is set up with 500
+28/03/2024 13:36:35 INFO    : [train_bert_on_squad.py:282] tid 1 it takes 267.759961605072 seconds to train bert
+28/03/2024 13:36:35 INFO    : [train_bert_on_squad.py:282] tid 0 it takes 267.5501048564911 seconds to train bert
+28/03/2024 13:38:16 INFO    : [main.py:96] full config:
+{
+    "policy": "TickTock",
+    "models": {
+        "model0": {
+            "mode": "train",
+            "name": "bert-1"
+        },
+        "model1": {
+            "mode": "train",
+            "name": "bert-1"
+        }
+    },
+    "shared_config": {
+        "distribution": "poisson",
+        "trace_path": "./inter_arrival_times.json",
+        "pin_memory": true,
+        "seed": 42
+    },
+    "resnet50": {
+        "arch": "resnet50",
+        "batch_size": 4,
+        "num_iterations": 100,
+        "request_rate": 15
+    },
+    "resnet101": {
+        "arch": "resnet101",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 10000,
+        "request_rate": 0
+    },
+    "bert": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "transformer": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "nasnet-1": {
+        "arch": "nasnet",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "vgg11-1": {
+        "arch": "vgg11",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "resnet50-1": {
+        "arch": "resnet50",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "resnet101-1": {
+        "arch": "resnet101",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2-1": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 1000,
+        "request_rate": 100
+    },
+    "bert-1": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "transformer-1": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 20
+    }
+}
+28/03/2024 13:38:21 INFO    : [train_bert_on_squad.py:230] bert model is set up with 500
+28/03/2024 13:38:21 INFO    : [train_bert_on_squad.py:230] bert model is set up with 500
+28/03/2024 13:42:56 INFO    : [train_bert_on_squad.py:282] tid 1 it takes 268.404860496521 seconds to train bert
+28/03/2024 13:42:56 INFO    : [train_bert_on_squad.py:282] tid 0 it takes 268.1960368156433 seconds to train bert
+28/03/2024 13:45:21 INFO    : [main.py:96] full config:
+{
+    "policy": "MPS",
+    "models": {
+        "model0": {
+            "mode": "train",
+            "name": "bert-1"
+        },
+        "model1": {
+            "mode": "train",
+            "name": "bert-1"
+        }
+    },
+    "shared_config": {
+        "distribution": "poisson",
+        "trace_path": "./inter_arrival_times.json",
+        "pin_memory": true,
+        "seed": 42
+    },
+    "resnet50": {
+        "arch": "resnet50",
+        "batch_size": 4,
+        "num_iterations": 100,
+        "request_rate": 15
+    },
+    "resnet101": {
+        "arch": "resnet101",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 10000,
+        "request_rate": 0
+    },
+    "bert": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "transformer": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "nasnet-1": {
+        "arch": "nasnet",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "vgg11-1": {
+        "arch": "vgg11",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "resnet50-1": {
+        "arch": "resnet50",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "resnet101-1": {
+        "arch": "resnet101",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2-1": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 1000,
+        "request_rate": 100
+    },
+    "bert-1": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "transformer-1": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 20
+    }
+}
+28/03/2024 13:52:42 INFO    : [main.py:96] full config:
+{
+    "policy": "MPS",
+    "models": {
+        "model0": {
+            "mode": "train",
+            "name": "bert-1"
+        },
+        "model1": {
+            "mode": "train",
+            "name": "bert-1"
+        }
+    },
+    "shared_config": {
+        "distribution": "poisson",
+        "trace_path": "./inter_arrival_times.json",
+        "pin_memory": true,
+        "seed": 42
+    },
+    "resnet50": {
+        "arch": "resnet50",
+        "batch_size": 4,
+        "num_iterations": 100,
+        "request_rate": 15
+    },
+    "resnet101": {
+        "arch": "resnet101",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 10000,
+        "request_rate": 0
+    },
+    "bert": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "transformer": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "nasnet-1": {
+        "arch": "nasnet",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "vgg11-1": {
+        "arch": "vgg11",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "resnet50-1": {
+        "arch": "resnet50",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "resnet101-1": {
+        "arch": "resnet101",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2-1": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 1000,
+        "request_rate": 100
+    },
+    "bert-1": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "transformer-1": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 20
+    }
+}
+28/03/2024 15:04:22 INFO    : [main.py:96] full config:
+{
+    "policy": "Streams",
+    "models": {
+        "model0": {
+            "mode": "train",
+            "name": "bert-1"
+        },
+        "model1": {
+            "mode": "train",
+            "name": "bert-1"
+        }
+    },
+    "shared_config": {
+        "distribution": "poisson",
+        "trace_path": "./inter_arrival_times.json",
+        "pin_memory": true,
+        "seed": 42
+    },
+    "resnet50": {
+        "arch": "resnet50",
+        "batch_size": 4,
+        "num_iterations": 100,
+        "request_rate": 15
+    },
+    "resnet101": {
+        "arch": "resnet101",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 10000,
+        "request_rate": 0
+    },
+    "bert": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "transformer": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "nasnet-1": {
+        "arch": "nasnet",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 0
+    },
+    "vgg11-1": {
+        "arch": "vgg11",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 0
+    },
+    "resnet50-1": {
+        "arch": "resnet50",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 0
+    },
+    "resnet101-1": {
+        "arch": "resnet101",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 0
+    },
+    "mobilenet_v2-1": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 1000,
+        "request_rate": 100
+    },
+    "bert-1": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 1000,
+        "request_rate": 0
+    },
+    "transformer-1": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 20
+    }
+}
+28/03/2024 15:04:28 INFO    : [train_bert_on_squad.py:230] bert model is set up with 1000
+28/03/2024 15:04:28 INFO    : [train_bert_on_squad.py:230] bert model is set up with 1000
+28/03/2024 15:08:45 INFO    : [train_bert_on_squad.py:282] tid 1 it takes 254.14449858665466 seconds to train bert
+28/03/2024 15:08:45 INFO    : [train_bert_on_squad.py:282] tid 0 it takes 254.00542426109314 seconds to train bert
+29/03/2024 05:18:53 INFO    : [main.py:96] full config:
+{
+    "policy": "Sequential",
+    "models": {
+        "model0": {
+            "mode": "train",
+            "name": "bert-1"
+        },
+        "model1": {
+            "mode": "train",
+            "name": "bert-1"
+        }
+    },
+    "shared_config": {
+        "distribution": "poisson",
+        "trace_path": "./inter_arrival_times.json",
+        "pin_memory": true,
+        "seed": 42
+    },
+    "resnet50": {
+        "arch": "resnet50",
+        "batch_size": 4,
+        "num_iterations": 100,
+        "request_rate": 15
+    },
+    "resnet101": {
+        "arch": "resnet101",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 1000,
+        "request_rate": 0
+    },
+    "bert": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "transformer": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "nasnet-1": {
+        "arch": "nasnet",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 0
+    },
+    "vgg11-1": {
+        "arch": "vgg11",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 0
+    },
+    "resnet50-1": {
+        "arch": "resnet50",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 0
+    },
+    "resnet101-1": {
+        "arch": "resnet101",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 0
+    },
+    "mobilenet_v2-1": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 1000,
+        "request_rate": 100
+    },
+    "bert-1": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 1000,
+        "request_rate": 0
+    },
+    "transformer-1": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 20
+    }
+}
+29/03/2024 05:19:00 INFO    : [train_bert_on_squad.py:230] bert model is set up with 1000
+29/03/2024 05:19:00 INFO    : [train_bert_on_squad.py:230] bert model is set up with 1000
+29/03/2024 05:24:21 INFO    : [train_bert_on_squad.py:282] tid 1 it takes 316.9647047519684 seconds to train bert
+29/03/2024 05:24:21 INFO    : [train_bert_on_squad.py:282] tid 0 it takes 316.9198398590088 seconds to train bert

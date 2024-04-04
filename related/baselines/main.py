@@ -13,6 +13,14 @@ from bert.train_bert_on_squad import train_wrapper as bert_train_wrapper, eval_w
 from transformer.train_transformer import train_wrapper as transformer_train_wrapper, eval_wrapper as transformer_eval_wrapper
 
 model_to_wrapper = {
+    'vgg11': {
+        'train': vision_train_wrapper,
+        'eval': vision_eval_wrapper,
+    },
+    'nasnet': {
+        'train': vision_train_wrapper,
+        'eval': vision_eval_wrapper,
+    },
     'resnet50': {
         'train': vision_train_wrapper,
         'eval': vision_eval_wrapper,
@@ -140,7 +148,7 @@ if __name__ == "__main__":
         for i in range(num_clients):
             processes[i].join()
     elif policy == "Isolated":
-        for mwrapper, mkwargs in zip(model_wrappers, model0_kwargs):
+        for mwrapper, mkwargs in zip(model_wrappers, model_kwargs):
             mwrapper(**mkwargs)
     elif policy in {"Streams", 'TickTock', 'Sequential'}:
         threads = [threading.Thread(target=mwrapper, kwargs=mkwargs) for mwrapper,mkwargs in zip(model_wrappers, model_kwargs)]

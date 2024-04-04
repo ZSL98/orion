@@ -7,12 +7,13 @@ from utils.sync_info import BasicSyncInfo, ConcurrentSyncInfo
 import time
 
 from utils.sync_control import *
-
+from nasnet.nasnet import NASNetALarge
+from nasnet.nasnet_mobile import NASNetAMobile
 
 
 def eval_wrapper(sync_info: BasicSyncInfo, tid: int, model_config, shared_config):
     utils.seed_everything(shared_config['seed'])
-    device = torch.device("cuda:0")
+    device = torch.device("cuda:1")
     if 'default' in shared_config and shared_config['default']:
         stream = torch.cuda.default_stream(device=device)
     else:
@@ -38,7 +39,7 @@ def eval_wrapper(sync_info: BasicSyncInfo, tid: int, model_config, shared_config
 
 def train_wrapper(sync_info: BasicSyncInfo, tid: int, model_config, shared_config):
     utils.seed_everything(shared_config['seed'])
-    device = torch.device("cuda:0")
+    device = torch.device("cuda:1")
 
     if 'default' in shared_config and shared_config['default']:
         stream = torch.cuda.default_stream(device=device)
@@ -53,7 +54,7 @@ def train_wrapper(sync_info: BasicSyncInfo, tid: int, model_config, shared_confi
     num_iterations = model_config['num_iterations']
     logging.info(f'model is set up with num iterations {num_iterations}')
 
-    warm_up_iters = 10
+    warm_up_iters = 100
 
     for batch_idx, batch in enumerate(train_loader):
         if batch_idx == warm_up_iters:
@@ -104,7 +105,12 @@ def setup(model_config, shared_config, device):
     torch.cuda.set_device(device)
     arch = model_config['arch']
     logging.info(f'vision model with arch {arch}')
-    model = models.__dict__[arch](num_classes=1000)
+    if arch == 'nasnet':
+        model = NASNetALarge(num_classes=1000)
+        img_size = 331
+    else:
+        model = models.__dict__[arch](num_classes=1000)
+        img_size = 224
     model = model.to(device)
     # optimizer_func = getattr(torch.optim, model_config['optimizer'])
     optimizer = torch.optim.SGD(model.parameters(), lr=0.1)
@@ -114,7 +120,7 @@ def setup(model_config, shared_config, device):
     pin_memory = shared_config['pin_memory']
 
     train_loader = utils.DummyDataLoader(batch=(
-        torch.rand([batch_size, 3, 224, 224], pin_memory=pin_memory),
+        torch.rand([batch_size, 3, img_size, img_size], pin_memory=pin_memory),
         torch.ones([batch_size], pin_memory=pin_memory).to(torch.long)
     ))
     # else:

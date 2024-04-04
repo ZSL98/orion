@@ -51,7 +51,7 @@ cudnnStatus_t cudnnConvolutionForward(cudnnHandle_t handle, const void *alpha, c
 
 		status = (*cudnn_conv_func)(handle, alpha, xDesc, x, wDesc, w, convDesc, algo, workSpace, workSpaceSizeInBytes, beta, yDesc, y);
 		if (status != CUDNN_STATUS_SUCCESS)
-			printf("status is %d\n", status);
+			DEBUG_PRINT("status is %d\n", status);
 		assert (status == CUDNN_STATUS_SUCCESS);
 
 		DEBUG_PRINT("CONV submitted!!\n");
@@ -116,7 +116,9 @@ cudnnStatus_t cudnnBatchNormalizationForwardTrainingEx(cudnnHandle_t handle, cud
 	else {
 
 		if (cudnn_bnorm_func==NULL) {
-			*(void **)(&cudnn_bnorm_func) = dlsym(RTLD_NEXT, "cudnnBatchNormalizationForwardTrainingEx");
+			static constexpr const char *s_cudnn_dso = "/usr/lib/x86_64-linux-gnu/libcudnn.so";
+			static void *cudnn_handle = dlopen(s_cudnn_dso, RTLD_NOW | RTLD_LOCAL);
+			*(void **)(&cudnn_bnorm_func) = dlsym(cudnn_handle, "cudnnBatchNormalizationForwardTrainingEx");
 			assert(cudnn_bnorm_func != NULL);
 		}
 		status = (*cudnn_bnorm_func)(handle, mode, bnOps, alpha, beta, xDesc, xData, zDesc, zData, yDesc, yData, bnScaleBiasMeanVarDesc, bnScaleData, bnBiasData, exponentialAverageFactor, resultRunningMeanData, resultRunningVarianceData, epsilon, saveMean, saveInvVariance, activationDesc, workspace, workSpaceSizeInBytes, reserveSpace, reserveSpaceSizeInBytes);
@@ -173,11 +175,16 @@ cudnnStatus_t cudnnBatchNormalizationForwardInference(cudnnHandle_t handle, cudn
 	else {
 
 		if (cudnn_bnorm_infer_func==NULL) {
-			*(void **)(&cudnn_bnorm_infer_func) = dlsym(RTLD_NEXT, "cudnnBatchNormalizationForwardInference");
+			static constexpr const char *s_cudnn_dso = "/usr/lib/x86_64-linux-gnu/libcudnn.so";
+			static void *cudnn_handle = dlopen(s_cudnn_dso, RTLD_NOW | RTLD_LOCAL);
+			*(void **)(&cudnn_bnorm_infer_func) = dlsym(cudnn_handle, "cudnnBatchNormalizationForwardInference");
+			// DEBUG_PRINT("cudnnBatchNormalizationForwardInference--\n");
+			// *(void **)(&cudnn_bnorm_infer_func) = dlsym(RTLD_NEXT, "cudnnBatchNormalizationForwardInference");
 			assert(cudnn_bnorm_infer_func != NULL);
 		}
 
 		status = (*cudnn_bnorm_infer_func)(handle, mode, alpha, beta, xDesc, x, xDesc, y, bnScaleBiasMeanVarDesc, bnScale, bnBias, estimatedMean, estimatedVariance, epsilon);
+		// DEBUG_PRINT("cudnnBatchNormalizationForwardInference\n");
 		assert (status == CUDNN_STATUS_SUCCESS);
 
 	}
@@ -430,7 +437,9 @@ cudnnStatus_t cudnnBatchNormalizationBackwardEx (
 	else {
 
 		if (cudnn_bnorm_bw_func==NULL) {
-			*(void **)(&cudnn_bnorm_bw_func) = dlsym(RTLD_NEXT, "cudnnBatchNormalizationBackwardEx");
+			static constexpr const char *s_cudnn_dso = "/usr/lib/x86_64-linux-gnu/libcudnn.so";
+			static void *cudnn_handle = dlopen(s_cudnn_dso, RTLD_NOW | RTLD_LOCAL);
+			*(void **)(&cudnn_bnorm_bw_func) = dlsym(cudnn_handle, "cudnnBatchNormalizationBackwardEx");
 			assert(cudnn_bnorm_bw_func != NULL);
 		}
 
@@ -469,7 +478,7 @@ cudnnStatus_t cudnnBatchNormalizationBackwardEx (
 		);
 
 		if (status != CUDNN_STATUS_SUCCESS)
-			printf("status is %d\n", status);
+			DEBUG_PRINT("status is %d\n", status);
 		assert (status == CUDNN_STATUS_SUCCESS);
 
 		DEBUG_PRINT("BNORM BACKWARD submitted!!\n");

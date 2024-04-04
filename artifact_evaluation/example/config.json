@@ -10,7 +10,7 @@
             "rps": 30,
 			"uniform": true,
 			"dummy_data": true,
-			"train": false
+			"train": true
 		}
 	}
 ]

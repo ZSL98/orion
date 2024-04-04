@@ -1,0 +1,388 @@
+28/03/2024 11:59:26 INFO    : [main.py:96] full config:
+{
+    "policy": "Streams",
+    "models": {
+        "model0": {
+            "mode": "train",
+            "name": "mnasnet-1"
+        },
+        "model1": {
+            "mode": "train",
+            "name": "mnasnet-1"
+        }
+    },
+    "shared_config": {
+        "distribution": "poisson",
+        "trace_path": "./inter_arrival_times.json",
+        "pin_memory": true,
+        "seed": 42
+    },
+    "resnet50": {
+        "arch": "resnet50",
+        "batch_size": 4,
+        "num_iterations": 100,
+        "request_rate": 15
+    },
+    "resnet101": {
+        "arch": "resnet101",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 10000,
+        "request_rate": 0
+    },
+    "bert": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "transformer": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mnasnet-1": {
+        "arch": "mnasnet",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "vgg11-1": {
+        "arch": "vgg11",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "resnet50-1": {
+        "arch": "resnet50",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "resnet101-1": {
+        "arch": "resnet101",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2-1": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 1000,
+        "request_rate": 100
+    },
+    "bert-1": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 1000,
+        "request_rate": 8
+    },
+    "transformer-1": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 20
+    }
+}
+28/03/2024 11:59:27 INFO    : [train_imagenet.py:106] vision model with arch mnasnet
+28/03/2024 11:59:27 INFO    : [train_imagenet.py:106] vision model with arch mnasnet
+28/03/2024 12:00:19 INFO    : [main.py:96] full config:
+{
+    "policy": "Streams",
+    "models": {
+        "model0": {
+            "mode": "train",
+            "name": "mnasnet-1"
+        },
+        "model1": {
+            "mode": "train",
+            "name": "mnasnet-1"
+        }
+    },
+    "shared_config": {
+        "distribution": "poisson",
+        "trace_path": "./inter_arrival_times.json",
+        "pin_memory": true,
+        "seed": 42
+    },
+    "resnet50": {
+        "arch": "resnet50",
+        "batch_size": 4,
+        "num_iterations": 100,
+        "request_rate": 15
+    },
+    "resnet101": {
+        "arch": "resnet101",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 10000,
+        "request_rate": 0
+    },
+    "bert": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "transformer": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mnasnet-1": {
+        "arch": "mnasnet1_3",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "vgg11-1": {
+        "arch": "vgg11",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "resnet50-1": {
+        "arch": "resnet50",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "resnet101-1": {
+        "arch": "resnet101",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2-1": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 1000,
+        "request_rate": 100
+    },
+    "bert-1": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 1000,
+        "request_rate": 8
+    },
+    "transformer-1": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 20
+    }
+}
+28/03/2024 12:00:19 INFO    : [train_imagenet.py:106] vision model with arch mnasnet1_3
+28/03/2024 12:00:19 INFO    : [train_imagenet.py:106] vision model with arch mnasnet1_3
+28/03/2024 12:00:20 INFO    : [train_imagenet.py:54] model is set up with num iterations 500
+28/03/2024 12:00:20 INFO    : [train_imagenet.py:54] model is set up with num iterations 500
+28/03/2024 12:00:42 INFO    : [train_imagenet.py:99] tid 1 it takes 20.881336450576782 seconds to train imagenet
+28/03/2024 12:00:42 INFO    : [train_imagenet.py:99] tid 0 it takes 20.79357933998108 seconds to train imagenet
+28/03/2024 12:01:26 INFO    : [main.py:96] full config:
+{
+    "policy": "Streams",
+    "models": {
+        "model0": {
+            "mode": "train",
+            "name": "mnasnet-1"
+        },
+        "model1": {
+            "mode": "train",
+            "name": "mnasnet-1"
+        }
+    },
+    "shared_config": {
+        "distribution": "poisson",
+        "trace_path": "./inter_arrival_times.json",
+        "pin_memory": true,
+        "seed": 42
+    },
+    "resnet50": {
+        "arch": "resnet50",
+        "batch_size": 4,
+        "num_iterations": 100,
+        "request_rate": 15
+    },
+    "resnet101": {
+        "arch": "resnet101",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 10000,
+        "request_rate": 0
+    },
+    "bert": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "transformer": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mnasnet-1": {
+        "arch": "mnasnet0_5",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "vgg11-1": {
+        "arch": "vgg11",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "resnet50-1": {
+        "arch": "resnet50",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "resnet101-1": {
+        "arch": "resnet101",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2-1": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 1000,
+        "request_rate": 100
+    },
+    "bert-1": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 1000,
+        "request_rate": 8
+    },
+    "transformer-1": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 20
+    }
+}
+28/03/2024 12:01:27 INFO    : [train_imagenet.py:106] vision model with arch mnasnet0_5
+28/03/2024 12:01:27 INFO    : [train_imagenet.py:106] vision model with arch mnasnet0_5
+28/03/2024 12:01:27 INFO    : [train_imagenet.py:54] model is set up with num iterations 500
+28/03/2024 12:01:27 INFO    : [train_imagenet.py:54] model is set up with num iterations 500
+28/03/2024 12:01:42 INFO    : [train_imagenet.py:99] tid 0 it takes 14.02942180633545 seconds to train imagenet
+28/03/2024 12:01:42 INFO    : [train_imagenet.py:99] tid 1 it takes 14.05005431175232 seconds to train imagenet
+28/03/2024 12:02:22 INFO    : [main.py:96] full config:
+{
+    "policy": "Streams",
+    "models": {
+        "model0": {
+            "mode": "train",
+            "name": "mnasnet-1"
+        },
+        "model1": {
+            "mode": "train",
+            "name": "mnasnet-1"
+        }
+    },
+    "shared_config": {
+        "distribution": "poisson",
+        "trace_path": "./inter_arrival_times.json",
+        "pin_memory": true,
+        "seed": 42
+    },
+    "resnet50": {
+        "arch": "resnet50",
+        "batch_size": 4,
+        "num_iterations": 100,
+        "request_rate": 15
+    },
+    "resnet101": {
+        "arch": "resnet101",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 10000,
+        "request_rate": 0
+    },
+    "bert": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "transformer": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mnasnet-1": {
+        "arch": "mnasnet0_75",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "vgg11-1": {
+        "arch": "vgg11",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "resnet50-1": {
+        "arch": "resnet50",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "resnet101-1": {
+        "arch": "resnet101",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2-1": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 1000,
+        "request_rate": 100
+    },
+    "bert-1": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 1000,
+        "request_rate": 8
+    },
+    "transformer-1": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 20
+    }
+}
+28/03/2024 12:02:22 INFO    : [train_imagenet.py:106] vision model with arch mnasnet0_75
+28/03/2024 12:02:22 INFO    : [train_imagenet.py:106] vision model with arch mnasnet0_75
+28/03/2024 12:02:23 INFO    : [train_imagenet.py:54] model is set up with num iterations 500
+28/03/2024 12:02:23 INFO    : [train_imagenet.py:54] model is set up with num iterations 500
+28/03/2024 12:02:42 INFO    : [train_imagenet.py:99] tid 1 it takes 18.121337175369263 seconds to train imagenet
+28/03/2024 12:02:42 INFO    : [train_imagenet.py:99] tid 0 it takes 18.0446720123291 seconds to train imagenet

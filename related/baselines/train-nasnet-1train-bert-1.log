@@ -1,0 +1,95 @@
+01/04/2024 14:10:33 INFO    : [main.py:96] full config:
+{
+    "policy": "TickTock",
+    "models": {
+        "model0": {
+            "mode": "train",
+            "name": "nasnet-1"
+        },
+        "model1": {
+            "mode": "train",
+            "name": "bert-1"
+        }
+    },
+    "shared_config": {
+        "distribution": "poisson",
+        "trace_path": "./inter_arrival_times.json",
+        "pin_memory": true,
+        "seed": 42
+    },
+    "resnet50": {
+        "arch": "resnet50",
+        "batch_size": 4,
+        "num_iterations": 100,
+        "request_rate": 15
+    },
+    "resnet101": {
+        "arch": "resnet101",
+        "batch_size": 32,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "mobilenet_v2": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 1000,
+        "request_rate": 0
+    },
+    "bert": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "transformer": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 500,
+        "request_rate": 0
+    },
+    "nasnet-1": {
+        "arch": "nasnet",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 0
+    },
+    "vgg11-1": {
+        "arch": "vgg11",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 0
+    },
+    "resnet50-1": {
+        "arch": "resnet50",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 0
+    },
+    "resnet101-1": {
+        "arch": "resnet101",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 0
+    },
+    "mobilenet_v2-1": {
+        "arch": "mobilenet_v2",
+        "batch_size": 64,
+        "num_iterations": 1000,
+        "request_rate": 100
+    },
+    "bert-1": {
+        "batch_size": 8,
+        "arch": "base",
+        "num_iterations": 1000,
+        "request_rate": 0
+    },
+    "transformer-1": {
+        "arch": "base",
+        "batch_size": 8,
+        "num_iterations": 1000,
+        "request_rate": 20
+    }
+}
+01/04/2024 14:10:33 INFO    : [train_imagenet.py:107] vision model with arch nasnet
+01/04/2024 14:10:36 INFO    : [train_bert_on_squad.py:230] bert model is set up with 1000
+01/04/2024 14:10:37 INFO    : [train_imagenet.py:55] model is set up with num iterations 1000

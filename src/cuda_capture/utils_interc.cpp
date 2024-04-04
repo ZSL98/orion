@@ -29,6 +29,7 @@ int get_idx() {
 				if (thread_ids[i] == 0) {
 					thread_ids[i] = tid;
 					idx = i%(clients+1);
+					break;
 				}
 			}
 		}

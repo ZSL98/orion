@@ -19,6 +19,7 @@ from benchmark_suite.train_imagenet import imagenet_loop
 from benchmark_suite.toy_models.bnorm_trainer import bnorm_loop
 from benchmark_suite.toy_models.conv_bn_trainer import conv_bn_loop
 
+sys.path.append(f"{home_directory}/orion/")
 from src.scheduler_frontend import PyScheduler
 
 function_dict = {

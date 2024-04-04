@@ -79,7 +79,8 @@ class PyScheduler:
 
                 print("wait here")
                 barriers[0].wait() #FIXME
-                print("done!")
+                print("==========done===========")
+                # time.sleep(2)
 
                 # warmup
                 self._sched_lib.schedule(self._scheduler, num_clients, True, 0, True, 10, reef, sequential, reef_depth, hp_limit, update_start)

@@ -41,6 +41,7 @@ vector<bool> is_train;
 // reef
 int lp_idx = 0;
 int penalty = 0;
+int penalty2 = 0;
 bool** request_status;
 bool* stops;
 bool* stop_ack;
@@ -93,9 +94,9 @@ void Scheduler::profile_prep(queue<func_record>** qbuffers, int num_clients, boo
 void Scheduler::schedule_reef(vector<func_record*> frecords, int num_clients, int depth) {
 
 	// schedule based on REEF policy
-
 	if (num_clients==1) {
 		if (frecords[0] != NULL) {
+			printf("SCHEDULE1 seen0=%d\n", seen[0]);
 			schedule_kernel(*(frecords[0]), sched_streams[0], 0, events[0][event_ids[0]], seen, event_ids, 0);
 			pop_from_queue(client_buffers[0], client_mutexes[0], 0);
 		}
@@ -107,6 +108,7 @@ void Scheduler::schedule_reef(vector<func_record*> frecords, int num_clients, in
 	// check for malloc operations
 	for (int i=0; i<num_clients; i++) {
 		if (frecords[i] != NULL) {
+			printf("SCHEDULE2 seen0=%d\n", seen[0]);
 			if (frecords[i]->type == MALLOC_RECORD || num_client_cur_iters[i] <= 10 || num_client_cur_iters[hp_client] >= num_client_max_iters[hp_client]) {
 				schedule_kernel(*(frecords[i]), sched_streams[i], i, events[i][event_ids[i]], seen, event_ids, i);
 				pop_from_queue(client_buffers[i], client_mutexes[i], i);
@@ -119,6 +121,7 @@ void Scheduler::schedule_reef(vector<func_record*> frecords, int num_clients, in
 	if (frecords[hp_client] != NULL) {
 		int hp_idx = seen[hp_client];
 
+		printf("SCHEDULE3 seen1=%d\n", seen[1]);
 		schedule_kernel(*(frecords[hp_client]), sched_streams[hp_client], hp_client, events[hp_client][event_ids[hp_client]], seen, event_ids, hp_client);
 		pop_from_queue(client_buffers[hp_client], client_mutexes[hp_client], hp_client);
 
@@ -130,9 +133,10 @@ void Scheduler::schedule_reef(vector<func_record*> frecords, int num_clients, in
 				op_info op_info_0 = op_info_vector[i][seen[i]];
 				if (op_info_0.duration <= op_info_1.duration && op_info_0.sm_used >= op_info_1.sm_used) {
 					// colocate
-					DEBUG_PRINT("SCHEDULE seen[0]=%d\n", seen[0]);
+					printf("SCHEDULE4 seen0=%d, seen1=%d\n", seen[0], seen[1]);
 					schedule_kernel(*(frecords[i]), sched_streams[i], i, events[i][event_ids[i]], seen, event_ids, i);
 					pop_from_queue(client_buffers[i], client_mutexes[i], i);
+					printf("SCHEDULE5 seen1=%d\n", seen[1]);
 					// if one is found, exit
 					return;
 				}
@@ -172,6 +176,7 @@ int Scheduler::schedule_sequential(vector<func_record*> frecords, int num_client
 	// 1 client
 	if (num_clients==1) {
 		if (frecords[0] != NULL) {
+			// printf("SCHEDULE hp seen[1]=%d\n", seen[1]);
 			schedule_kernel(*(frecords[0]), sched_streams[0], 0, events[0][event_ids[0]], seen, event_ids, 0);
 			pop_from_queue(client_buffers[0], client_mutexes[0], 0);
 		}
@@ -234,6 +239,45 @@ int Scheduler::schedule_sequential(vector<func_record*> frecords, int num_client
 	return start;
 
 }
+
+void Scheduler::schedule_bless(vector<func_record*> frecords, int num_clients) {
+	for (int client=0; client<num_clients; client++) {
+		if (frecords[client] != NULL) {
+			bool schedule = true;
+			if (schedule) {
+				schedule_kernel(*(frecords[client]), sched_streams[client], client, events[client][event_ids[client]], seen, event_ids, client);
+				pop_from_queue(client_buffers[client], client_mutexes[client], client);
+			}
+		}
+	}
+}
+
+// void Scheduler::schedule_bless(vector<func_record*> frecords, int num_clients) {
+// 	// for (int client=0; client<num_clients; client++) {
+// 	// 	if (frecords[client] != NULL)
+// 	// 		penalty += 1;
+// 	// }
+// 	if (frecords[0] != NULL)
+// 		penalty += 1;
+// 	if (frecords[1] != NULL)
+// 		penalty2 += 1;
+// 	// printf("penalty0: %d\n", penalty);
+// 	// printf("penalty1: %d\n", penalty2);
+// 	if (penalty>=10 || penalty2>=10) {
+// 		for (int client=0; client<num_clients; client++) {
+// 			if (frecords[client] != NULL) {
+// 				bool schedule = true;
+// 				if (schedule) {
+// 					schedule_kernel(*(frecords[client]), sched_streams[client], client, events[client][event_ids[client]], seen, event_ids, client);
+// 					pop_from_queue(client_buffers[client], client_mutexes[client], client);
+// 				}
+// 			}
+// 		}
+// 		penalty = 0;
+// 		penalty2 = 0;
+// 	}
+// }
+
 
 void* Scheduler::busy_wait_profile(int num_clients, int iter, bool warmup, int warmup_iters, bool reef, bool seq, int depth, int hp_limit, int update_start) {
 
@@ -302,12 +346,17 @@ void* Scheduler::busy_wait_profile(int num_clients, int iter, bool warmup, int w
 		}
 
 		if (reef) {
-			schedule_reef(frecords, num_clients, depth);
+			// printf("run reef\n");
+			// schedule_reef(frecords, num_clients, depth);
+			schedule_bless(frecords, num_clients);
+			// start = schedule_sequential(frecords, num_clients, start);
 		}
 		else if (seq) {
+			printf("run seq\n");
 			start = schedule_sequential(frecords, num_clients, start);
 		}
 		else {
+			printf("run orion\n");
 			if (frecords[hp_client] != NULL) { // high priority
 
 				op_info op_info_1 = op_info_vector[hp_client][seen[hp_client]];
@@ -378,8 +427,8 @@ void* Scheduler::busy_wait_profile(int num_clients, int iter, bool warmup, int w
 		}
 
 		int finished = 0;
+		// printf("seen[0] is %d, seen[1] is %d\n", seen[0], seen[1]);
 		for (int i=0; i<num_clients; i++) {
-
 			if (
 				(num_client_cur_iters[i] == num_client_max_iters[i])
 				|| (warmup && (num_client_cur_iters[i]==warmup_iters))
@@ -415,7 +464,7 @@ void* Scheduler::busy_wait_profile(int num_clients, int iter, bool warmup, int w
 					streams[i] = -1;
 					fidx[i] = 0;
 					request_status[i][num_client_cur_iters[i]] = true;
-					//printf("UNLOCK CLIENT %d\n", i);
+					printf("UNLOCK CLIENT %d\n", i);
 					pthread_mutex_unlock(client_mutexes[i]);
 					num_client_cur_iters[i] += 1;
 					locked[i] = false;
@@ -450,6 +499,7 @@ void* Scheduler::busy_wait_profile(int num_clients, int iter, bool warmup, int w
 					|| (warmup && (num_client_cur_iters[i]==warmup_iters))
 					|| (stop_ack[i] == true)
 				) {
+					printf("stop_ack: %d, %d\n", stop_ack[i], i);
 					finished += 1;
 					if (!warmup) {
 						auto end_total = std::chrono::high_resolution_clock::now();

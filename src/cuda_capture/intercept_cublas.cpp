@@ -32,7 +32,7 @@ cublasStatus_t cublasSgemm_v2(cublasHandle_t handle, cublasOperation_t transa, c
 	if (idx < *num_total_clients) {
 
 		pthread_mutex_lock(mutexes[idx]);
-		DEBUG_PRINT("[INTERCEPTER-CATCH]-[%d] Caught cublasSgemm_v2, handle is %p, index %d, m is %d, n is %d, k is %d\n", func_indexes[idx], handle, idx, m, n, k);
+		printf("[INTERCEPTER-CATCH]-[%d] Caught cublasSgemm_v2, handle is %p, index %d, m is %d, n is %d, k is %d\n", func_indexes[idx], handle, idx, m, n, k);
 		kqueues[idx]->push(new_record);
 		func_indexes[idx] += 1;
 		pthread_mutex_unlock(mutexes[idx]);
@@ -46,8 +46,8 @@ cublasStatus_t cublasSgemm_v2(cublasHandle_t handle, cublasOperation_t transa, c
 			assert(cublas_sgemm_func != NULL);
 		}
 		status = (*cublas_sgemm_func)(handle, transa, transb, m, n, k, alpha, A, lda, B, ldb, beta, C, ldc);
+		printf("CUBLAS status is %d\n", status);
 		assert (status == CUBLAS_STATUS_SUCCESS);
-		DEBUG_PRINT("CUBLAS status is %d\n", status);
 
 	}
 
